@@ -1,25 +1,21 @@
 <?php
+require('config.php');
 
-/* --------------------------------------------------------------
- * Load system
- * -------------------------------------------------------------- */
-require('system.php');
 $system = new System;
-
 
 /* --------------------------------------------------------------
  * Get current directory
  * -------------------------------------------------------------- */
 $base = rtrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)), '/');
-?>
 
-<!doctype html>
+?><!doctype html>
 <html>
 <head>
     <title><?php echo $system->os->hostname; ?></title>
     <meta charset="utf-8">
+    <meta http-equiv="refresh" content="<?php echo $refresh ?>">    
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="<? echo $base . '/static/dark.css'; ?>">
+    <link rel="stylesheet" href="<? echo $base . '/static/gradient.css'; ?>">
 </head>
 <body>
 
@@ -31,19 +27,17 @@ $base = rtrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)), '/'
 </h1>
 
 <?php
+	/* --------------------------------------------------------------
+	 * Show widgets
+	 * -------------------------------------------------------------- */
+	$directory = dirname(__FILE__) . '/widgets';
+	$widgets = scandir($directory,  SCANDIR_SORT_ASCENDING);
 
-/* --------------------------------------------------------------
- * Show widgets
- * -------------------------------------------------------------- */
-$directory = dirname(__FILE__) . '/widgets';
-$widgets = scandir($directory,  SCANDIR_SORT_ASCENDING);
-
-foreach ($widgets as $widget) {
-    if ($widget != '.' && $widget != '..') {
-        include($directory . '/' . $widget);
-    }
-}
-
+	foreach ($widgets as $widget) {
+	    if ($widget != '.' && $widget != '..') {
+	        include($directory . '/' . $widget);
+	    }
+	}
 ?>
 
 </div>
