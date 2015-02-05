@@ -13,10 +13,10 @@ $base = rtrim(str_replace($_SERVER['DOCUMENT_ROOT'], '', dirname(__FILE__)), '/'
 <head>
   <title><?php echo $system->os->hostname; ?></title>
   <meta charset="utf-8">
-  <link rel="shortcut icon" href="<?= $base ?>/favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
   <meta http-equiv="refresh" content="<?php echo $refresh ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="<?= $base ?>/static/gradient.css">
+  <link rel="stylesheet" href="static/gradient.css">
 </head>
 
 <body>
